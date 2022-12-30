@@ -16,6 +16,7 @@
 	</properties>
 
 	<modules>
+		<module>frontend</module>
 		<module>lvl-core</module>
 	</modules>
 
