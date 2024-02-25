@@ -4,7 +4,6 @@ import liquibase.integration.spring.SpringLiquibase;
 import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.PostgreSQL10Dialect;
 import org.postgresql.Driver;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.actuate.jdbc.DataSourceHealthIndicator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseDataSource;
@@ -43,14 +42,12 @@ public class JpaConfiguration {
     }
 
     @Bean
-    public DataSourceHealthIndicator postgresqlHibernateDataSourceHealth(@Qualifier("postgresqlHibernateDataSource") DataSource dataSource) {
+    public DataSourceHealthIndicator postgresqlHibernateDataSourceHealth(DataSource dataSource) {
         return new DataSourceHealthIndicator(dataSource);
     }
 
     @Bean(name = "entityManagerFactoryBean")
-    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory(
-            @Qualifier("postgresqlHibernateDataSource") DataSource dataSource,
-            JpaProperties jpaProperties) {
+    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory(DataSource dataSource, JpaProperties jpaProperties) {
         final var properties = new Properties();
         properties.setProperty(Environment.IMPLICIT_NAMING_STRATEGY, "component-path");
         properties.setProperty(Environment.DRIVER, Driver.class.getName());
@@ -73,7 +70,7 @@ public class JpaConfiguration {
     }
 
     @Bean
-    public SpringLiquibase liquibase(@Qualifier("postgresqlHibernateDataSource") DataSource dataSource) {
+    public SpringLiquibase liquibase(DataSource dataSource) {
         final var liquibase = new SpringLiquibase();
         liquibase.setChangeLog("classpath:db/changelog-master.xml");
         liquibase.setDataSource(dataSource);
