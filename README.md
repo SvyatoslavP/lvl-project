@@ -6,5 +6,7 @@
   * Class count to use import with '*': 15
   * Names count use static import with '*' : 15
 
-
+Если есть ошибка похожая на Plugin 'org.apache.maven.plugins:maven-jar-plugin:3.3.0' not found то стоит настроить Idea
+ * Maven Use plugin registry
+ * Reload All from Disk
 

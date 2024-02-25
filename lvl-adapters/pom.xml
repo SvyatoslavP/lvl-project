@@ -27,12 +27,4 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>ru.panifidkin.lvl-project</groupId>
-            <artifactId>core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>

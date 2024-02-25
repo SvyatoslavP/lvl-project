@@ -1,2 +1,17 @@
 server:
   port: 8083
+
+db:
+  lvl-project:
+    postgresql:
+      url: jdbc:postgresql://localhost:5433/postgres
+      username: postgres
+      password:
+
+jpa:
+  lvl-project:
+    hibernate:
+      ddlAuto: validate
+      showSql: true
+      formatSql: true
+      lockTimeOut: 10000

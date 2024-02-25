@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="D01.000.00" author="Panifidkin-SA" dbms="postgresql">
+        <comment>TASK-1</comment>
+        <sqlFile encoding="utf-8"
+                 path="db/D01.000/postgresql/create_table_users.sql"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback>
+            drop table users cascade constraints
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
