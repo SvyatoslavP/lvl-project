@@ -10,8 +10,8 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Lvl project : Assembly</name>
-    <artifactId>assembly</artifactId>
+    <name>Lvl project : Lvl assembly</name>
+    <artifactId>lvl-assembly</artifactId>
 
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>

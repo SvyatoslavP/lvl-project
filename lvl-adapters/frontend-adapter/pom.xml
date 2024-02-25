@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>ru.panifidkin.lvl-project</groupId>
-        <artifactId>adapters</artifactId>
+        <artifactId>lvl-adapters</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Lvl project : Adapters : Hibernate adapter</name>
-    <artifactId>hibernate-adapter</artifactId>
+    <name>Lvl project : Lvl adapters : Frontend adapter</name>
+    <artifactId>frontend-adapter</artifactId>
 
 </project>

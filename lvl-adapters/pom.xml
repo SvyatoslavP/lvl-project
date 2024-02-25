@@ -15,8 +15,8 @@
         <module>hibernate-adapter</module>
     </modules>
 
-    <name>Lvl project : Adapters</name>
-    <artifactId>adapters</artifactId>
+    <name>Lvl project : Lvl adapters</name>
+    <artifactId>lvl-adapters</artifactId>
 
     <build>
         <plugins>

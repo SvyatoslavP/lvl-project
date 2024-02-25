@@ -23,10 +23,10 @@
     </properties>
 
     <modules>
-        <module>assembly</module>
-        <module>common</module>
-        <module>core</module>
-        <module>adapters</module>
+        <module>lvl-assembly</module>
+        <module>lvl-common</module>
+        <module>lvl-core</module>
+        <module>lvl-adapters</module>
     </modules>
 
     <dependencyManagement>
