@@ -6,7 +6,7 @@ db:
     postgresql:
       url: jdbc:postgresql://localhost:5433/postgres
       username: postgres
-      password:
+      password: pass
 
 jpa:
   lvl-project:

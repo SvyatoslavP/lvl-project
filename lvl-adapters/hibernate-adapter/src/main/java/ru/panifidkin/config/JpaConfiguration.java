@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.actuate.jdbc.DataSourceHealthIndicator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseDataSource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -28,11 +28,11 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "ru.panifidkin.lvlproject",
         entityManagerFactoryRef = "entityManagerFactoryBean",
         transactionManagerRef = "annotationDriverTransactionManager")
+@ComponentScan(basePackages = {"ru.panifidkin.config"})
 public class JpaConfiguration {
 
     @Bean
     @LiquibaseDataSource
-    @ConfigurationProperties(prefix = "db.lvl-project.postgresql")
     public DataSource postgresqlHibernateDataSource(JdbcProperties properties) {
         return DataSourceBuilder.create()
                 .driverClassName(PostgreSQL10Dialect.class.getName())
@@ -48,8 +48,9 @@ public class JpaConfiguration {
     }
 
     @Bean(name = "entityManagerFactoryBean")
-    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory(@Qualifier("postgresqlHibernateDataSource") DataSource dataSource,
-                                                                                JpaProperties jpaProperties) {
+    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory(
+            @Qualifier("postgresqlHibernateDataSource") DataSource dataSource,
+            JpaProperties jpaProperties) {
         final var properties = new Properties();
         properties.setProperty(Environment.IMPLICIT_NAMING_STRATEGY, "component-path");
         properties.setProperty(Environment.DRIVER, Driver.class.getName());
