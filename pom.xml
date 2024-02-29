@@ -22,6 +22,7 @@
         <spring-devtools.version>3.0.4</spring-devtools.version>
         <querydsl.version>5.0.0</querydsl.version>
         <postgresql.version>42.2.23</postgresql.version>
+        <jsr305.version>3.0.2</jsr305.version>
     </properties>
 
     <modules>
@@ -39,6 +40,11 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
