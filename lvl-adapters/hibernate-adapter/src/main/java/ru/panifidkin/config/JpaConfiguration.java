@@ -1,7 +1,7 @@
 package ru.panifidkin.config;
 
 import liquibase.integration.spring.SpringLiquibase;
-import org.hibernate.cfg.Environment;
+import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.dialect.PostgreSQL10Dialect;
 import org.postgresql.Driver;
 import org.springframework.boot.actuate.jdbc.DataSourceHealthIndicator;
@@ -20,6 +20,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
+
+import static org.hibernate.cfg.AvailableSettings.DIALECT;
+import static org.hibernate.cfg.AvailableSettings.DRIVER;
+import static org.hibernate.cfg.AvailableSettings.FORMAT_SQL;
+import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
+import static org.hibernate.cfg.AvailableSettings.IMPLICIT_NAMING_STRATEGY;
+import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
+import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 
 @Configuration
 @EnableTransactionManagement
@@ -49,12 +57,13 @@ public class JpaConfiguration {
     @Bean(name = "entityManagerFactoryBean")
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory(DataSource dataSource, JpaProperties jpaProperties) {
         final var properties = new Properties();
-        properties.setProperty(Environment.IMPLICIT_NAMING_STRATEGY, "component-path");
-        properties.setProperty(Environment.DRIVER, Driver.class.getName());
-        properties.setProperty(Environment.DIALECT, PostgreSQL10Dialect.class.getName());
-        properties.setProperty(Environment.HBM2DDL_AUTO, jpaProperties.getDdlAuto());
-        properties.setProperty(Environment.SHOW_SQL, jpaProperties.getShowSql());
-        properties.setProperty(Environment.FORMAT_SQL, jpaProperties.getFormatSql());
+        properties.setProperty(IMPLICIT_NAMING_STRATEGY, "component-path");
+        properties.setProperty(PHYSICAL_NAMING_STRATEGY, CamelCaseToUnderscoresNamingStrategy.class.getName());
+        properties.setProperty(DRIVER, Driver.class.getName());
+        properties.setProperty(DIALECT, PostgreSQL10Dialect.class.getName());
+        properties.setProperty(HBM2DDL_AUTO, jpaProperties.getDdlAuto());
+        properties.setProperty(SHOW_SQL, jpaProperties.getShowSql());
+        properties.setProperty(FORMAT_SQL, jpaProperties.getFormatSql());
 
         final var entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
