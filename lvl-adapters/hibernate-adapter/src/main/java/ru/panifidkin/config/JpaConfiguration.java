@@ -34,7 +34,7 @@ public class JpaConfiguration {
     @LiquibaseDataSource
     public DataSource postgresqlHibernateDataSource(JdbcProperties properties) {
         return DataSourceBuilder.create()
-                .driverClassName(PostgreSQL10Dialect.class.getName())
+                .driverClassName(Driver.class.getName())
                 .url(properties.getUrl())
                 .username(properties.getUsername())
                 .password(properties.getPassword())
