@@ -5,17 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "players", schema = "public")
 public class Player {
 
@@ -25,5 +26,6 @@ public class Player {
 
     private String firstName;
     private String lastName;
+    @Column(columnDefinition = "date")
     private LocalDate birthDate;
 }

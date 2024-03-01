@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 import static ru.panifidkin.lvlproject.utils.Objects.applyIfNotNull;
 
-@Converter(autoApply = true)
+@Converter
 public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
     @Override

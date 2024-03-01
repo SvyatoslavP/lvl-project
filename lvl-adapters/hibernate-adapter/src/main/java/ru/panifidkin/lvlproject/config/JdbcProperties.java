@@ -1,4 +1,4 @@
-package ru.panifidkin.config;
+package ru.panifidkin.lvlproject.config;
 
 import lombok.Data;
 import lombok.ToString;
@@ -11,17 +11,16 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "jpa.lvl-project.hibernate")
-@ToString
-public class JpaProperties {
+@ConfigurationProperties(prefix = "db.lvl-project.postgresql")
+@ToString(exclude = "password")
+public class JdbcProperties {
 
-    private String ddlAuto;
-    private String showSql;
-    private String formatSql;
-    private String lockTimeOut;
+    private String url;
+    private String username;
+    private String password;
 
     @PostConstruct
     void log() {
-        log.info("jpa.lvl-project.hibernate: {}", this);
+        log.info("db.lvl-project.postgresql: {}", this);
     }
 }

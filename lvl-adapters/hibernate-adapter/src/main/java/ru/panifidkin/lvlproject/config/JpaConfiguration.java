@@ -1,4 +1,4 @@
-package ru.panifidkin.config;
+package ru.panifidkin.lvlproject.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
