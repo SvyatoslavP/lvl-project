@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>ru.panifidkin.lvl-project</groupId>
+            <artifactId>api-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.panifidkin.lvl-project</groupId>
             <artifactId>lvl-common</artifactId>
             <version>${project.version}</version>
         </dependency>

@@ -10,4 +10,8 @@ public class Objects {
     public static <T, R> R applyIfNotNull(T obj, Function<T, R> function) {
         return obj == null ? null : function.apply(obj);
     }
+
+    public static boolean isNullOrEmpty(String str) {
+        return com.google.common.base.Strings.isNullOrEmpty(str);
+    }
 }
