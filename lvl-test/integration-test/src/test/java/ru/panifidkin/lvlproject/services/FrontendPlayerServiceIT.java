@@ -1,4 +1,4 @@
-package ru.panifidkin.lvlproject;
+package ru.panifidkin.lvlproject.services;
 
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,6 @@ import org.springframework.test.annotation.Rollback;
 import ru.panifidkin.lvlproject.annotation.IT;
 import ru.panifidkin.lvlproject.dao.PlayerRepository;
 import ru.panifidkin.lvlproject.entity.Player;
-import ru.panifidkin.lvlproject.services.FrontendPlayerService;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
