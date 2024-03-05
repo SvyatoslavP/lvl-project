@@ -31,7 +31,7 @@ public class PlayerRestController {
                                                 @RequestBody String requestBody) {
         log.info("getById: {}", requestBody);
         String rqUuid = headers.getFirst(REQUEST_TRANSPORT_ID_HEADER);
-        if (isNullOrEmpty(rqUuid) && isNullOrEmpty(requestBody)) {
+        if (isNullOrEmpty(rqUuid) || isNullOrEmpty(requestBody)) {
             return new ResponseEntity<>(BAD_REQUEST);
         }
         return ResponseEntity.ok()

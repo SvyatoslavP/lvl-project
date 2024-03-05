@@ -18,10 +18,10 @@ import java.util.Optional;
 @AllArgsConstructor
 public class FrontendPlayerService {
 
-    private static final String STATUS_ERROR = "1";
-    private static final String STATUS_SUCCESS = "0";
-    private static final String STATUS_NOT_FOUND = "7";
-    private static final String NOT_FOUND_MESSAGE = "Игрок с id : %s не найден";
+    public static final String STATUS_ERROR = "1";
+    public static final String STATUS_SUCCESS = "0";
+    public static final String STATUS_NOT_FOUND = "7";
+    public static final String NOT_FOUND_MESSAGE = "Игрок с id : %s не найден";
 
     private final FrontendPlayerSerializer serializer;
     private final PlayerService playerService;
@@ -36,7 +36,7 @@ public class FrontendPlayerService {
                     .map(converter::convert)
                     .map(this::createSuccess)
                     .map(serializer::serialize)
-                    .orElse(serializeError(String.format(NOT_FOUND_MESSAGE, rq.getPlayerId()), STATUS_NOT_FOUND));
+                    .orElseGet(() -> serializeError(String.format(NOT_FOUND_MESSAGE, rq.getPlayerId()), STATUS_NOT_FOUND));
         } catch (Exception e) {
             log.error("getById: {}", requestBody);
             rs = serializeError(e.getMessage(), STATUS_ERROR);

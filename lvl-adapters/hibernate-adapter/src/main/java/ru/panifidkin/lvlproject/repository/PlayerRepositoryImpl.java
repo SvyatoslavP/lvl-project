@@ -1,4 +1,4 @@
-package ru.panifidkin.repository;
+package ru.panifidkin.lvlproject.repository;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
