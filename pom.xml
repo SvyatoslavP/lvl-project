@@ -33,6 +33,7 @@
         <module>lvl-common</module>
         <module>lvl-core</module>
         <module>lvl-adapters</module>
+        <module>lvl-test</module>
     </modules>
 
     <dependencyManagement>
