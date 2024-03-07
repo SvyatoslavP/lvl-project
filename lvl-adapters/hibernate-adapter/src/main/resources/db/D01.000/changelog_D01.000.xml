@@ -16,4 +16,15 @@
             drop table users cascade constraints
         </rollback>
     </changeSet>
+    <changeSet id="D01.000.01" author="Panifidkin-SA" dbms="postgresql">
+        <comment>TASK-2</comment>
+        <sqlFile encoding="utf-8"
+                 path="db/D01.000/postgresql/add_accounts_column.sql"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback>
+            alter table players drop column account_login;
+            alter table players drop column account_password;
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
