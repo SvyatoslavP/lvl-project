@@ -14,4 +14,12 @@ public class Objects {
     public static boolean isNullOrEmpty(String str) {
         return com.google.common.base.Strings.isNullOrEmpty(str);
     }
+
+    public static boolean isNull(Object obj) {
+        return obj == null;
+    }
+
+    public static boolean isNotNull(Object obj) {
+        return obj != null;
+    }
 }

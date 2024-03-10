@@ -16,4 +16,35 @@
             drop table users cascade constraints
         </rollback>
     </changeSet>
+    <changeSet id="D01.000.01" author="Panifidkin-SA" dbms="postgresql">
+        <comment>TASK-2</comment>
+        <sqlFile encoding="utf-8"
+                 path="db/D01.000/postgresql/add_accounts_column.sql"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback>
+            alter table players drop column account_login;
+            alter table players drop column account_password;
+        </rollback>
+    </changeSet>
+    <changeSet id="D01.000.02" author="Iskhakov-NV" dbms="postgresql">
+        <comment>LVLP-01</comment>
+        <sqlFile encoding="utf-8"
+                 path="db/D01.000/postgresql/create_table_teams.sql"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback>
+            drop table teams cascade constraints
+        </rollback>
+    </changeSet>
+    <changeSet id="D01.000.03" author="Iskhakov-NV" dbms="postgresql">
+        <comment>LVLP-01</comment>
+        <sqlFile encoding="utf-8"
+                 path="db/D01.000/postgresql/create_table_teams_players.sql"
+                 splitStatements="true"
+                 stripComments="true"/>
+        <rollback>
+            drop table teams_players cascade constraints
+        </rollback>
+    </changeSet>
 </databaseChangeLog>
