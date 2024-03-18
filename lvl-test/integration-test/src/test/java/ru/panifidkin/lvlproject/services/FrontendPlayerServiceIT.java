@@ -2,20 +2,16 @@ package ru.panifidkin.lvlproject.services;
 
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.Rollback;
 import ru.panifidkin.lvlproject.annotation.IT;
 import ru.panifidkin.lvlproject.dao.PlayerRepository;
 import ru.panifidkin.lvlproject.entity.Account;
 import ru.panifidkin.lvlproject.entity.Player;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IT
-@Transactional
-@Rollback
 @RequiredArgsConstructor
 class FrontendPlayerServiceIT {
 
