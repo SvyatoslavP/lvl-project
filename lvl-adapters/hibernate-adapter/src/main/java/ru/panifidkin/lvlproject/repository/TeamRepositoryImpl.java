@@ -6,6 +6,7 @@ import ru.panifidkin.lvlproject.dao.TeamRepository;
 import ru.panifidkin.lvlproject.entity.Team;
 
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Repository
 public class TeamRepositoryImpl implements TeamRepository {
@@ -26,5 +27,12 @@ public class TeamRepositoryImpl implements TeamRepository {
     @Override
     public void delete(Team team) {
         session.delete(team);
+    }
+
+    @Override
+    public Team findByName(String name) {
+        Query query = session.createQuery("from Team t where t.teamName = :name ");
+        query.setParameter("name", name);
+        return (Team) query.getSingleResult();
     }
 }

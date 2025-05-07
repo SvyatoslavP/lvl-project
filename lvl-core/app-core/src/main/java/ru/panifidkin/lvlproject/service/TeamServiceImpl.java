@@ -30,4 +30,9 @@ public class TeamServiceImpl implements TeamService {
     public void delete(Team team) {
         repo.delete(team);
     }
+
+    @Override
+    public Team findByName(String name) {
+        return repo.findByName(name);
+    }
 }

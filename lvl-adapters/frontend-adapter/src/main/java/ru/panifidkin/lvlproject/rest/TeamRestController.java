@@ -37,4 +37,18 @@ public class TeamRestController {
         return ResponseEntity.ok()
                 .body(service.findTeamById(requestBody));
     }
+
+    @PostMapping(path = "/getTeamByName",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getTeamByName(@RequestHeader HttpHeaders headers,
+                                              @RequestBody String requestBody) {
+        log.info("getTeamByName: {}", requestBody);
+        String rqUuid = headers.getFirst(REQUEST_TRANSPORT_ID_HEADER);
+        if (isNullOrEmpty(rqUuid) || isNullOrEmpty(requestBody)) {
+            return new ResponseEntity<>(BAD_REQUEST);
+        }
+        return ResponseEntity.ok()
+                .body(service.getTeamByName(requestBody));
+    }
 }

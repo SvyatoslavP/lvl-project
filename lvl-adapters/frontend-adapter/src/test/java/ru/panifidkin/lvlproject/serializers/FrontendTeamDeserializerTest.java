@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.panifidkin.lvlproject.rq.SrvGetTeamByIdRq;
+import ru.panifidkin.lvlproject.rq.SrvGetTeamByNameRq;
 import ru.panifidkin.lvlproject.serialize.ObjectSerializer;
 
 import static org.mockito.Mockito.times;
@@ -17,15 +18,27 @@ class FrontendTeamDeserializerTest {
     @InjectMocks
     private FrontendTeamSerializer frontendTeamSerializer;
     @Mock
-    private ObjectSerializer<SrvGetTeamByIdRq> deserializer;
+    private ObjectSerializer<SrvGetTeamByIdRq> idDeserializer;
+    @Mock
+    private ObjectSerializer<SrvGetTeamByNameRq> nameDeserializer;
 
     @Test
-    void shouldCallDeserializerUponDeserialize() {
+    void shouldCallDeserializerUponIdDeserialize() {
         //given
         final String rs = "{rs}";
         //when
-        frontendTeamSerializer.deserialize(rs);
+        frontendTeamSerializer.idDeserialize(rs);
         //then
-        verify(deserializer, times(1)).deserialize(rs, SrvGetTeamByIdRq.class);
+        verify(idDeserializer, times(1)).deserialize(rs, SrvGetTeamByIdRq.class);
+    }
+
+    @Test
+    void shouldCallDeserializerUponNameDeserialize() {
+        //given
+        final String rs = "{rs}";
+        //when
+        frontendTeamSerializer.nameDeserialize(rs);
+        //then
+        verify(nameDeserializer, times(1)).deserialize(rs, SrvGetTeamByNameRq.class);
     }
 }

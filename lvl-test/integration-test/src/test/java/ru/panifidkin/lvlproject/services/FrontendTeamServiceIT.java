@@ -70,4 +70,51 @@ class FrontendTeamServiceIT {
                 }""");
     }
 
+    @Test
+    void shouldFindTeamByName() {
+        //given
+        final List<Player> players = Lists.newArrayList(Player.builder()
+                .firstName("testFirstName")
+                .lastName("testLastName")
+                .birthDate(LocalDate.of(1999, 1, 1))
+                 .account(Account.builder()
+                 .login("testLogin")
+                 .password("testPassword")
+                 .build())
+                .build());
+        final Team team = Team.builder()
+                .teamRating(BigDecimal.ONE)
+                .foundingDate(LocalDate.of(1999, 1, 1))
+                .players(players)
+                .teamName("testTeamName")
+                .build();
+        final String rqBody = """
+                {
+                    "teamName" : "testTeamName"
+                }
+                """;
+
+        repository.saveOrUpdate(team);
+        //when
+        final String rsBody = service.getTeamByName(rqBody);
+        //then
+        assertThat(rsBody).isEqualTo("""
+                {
+                  "team": {
+                    "teamName": "testTeamName",
+                    "teamRating": 1,
+                    "foundingDate": "1999-01-01",
+                    "players": [
+                      {
+                        "firstName": "testFirstName",
+                        "lastName": "testLastName",
+                        "birthDate": "1999-01-01"
+                      }
+                    ]
+                  },
+                  "status": {
+                    "statusCode": "0"
+                  }
+                }""");
+    }
 }

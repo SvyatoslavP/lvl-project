@@ -9,4 +9,6 @@ public interface TeamService {
     void saveOrUpdate(Team team);
 
     void delete(Team team);
+
+    Team findByName(String name);
 }
